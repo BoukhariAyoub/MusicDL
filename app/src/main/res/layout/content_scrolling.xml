@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.boukharist.musicdl.ScrollingActivity"
+    tools:showIn="@layout/activity_scrolling">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.boukharist.musicdl.MyAudioPlayerView
+        android:id="@+id/player"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="30dp"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="40sp"
+        app:loadingText="@string/customLoadingIcon"
+        app:playText="@string/customPlayIcon"
+        app:stopText="@string/customStopIcon"
+        app:useIcons="true"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:text="@string/app_name" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:hint="Enter your name here"
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Say hello!"
+        android:layout_below="@+id/editText"
+        android:onClick="sayHello"/>
+
+</RelativeLayout>
+</android.support.v4.widget.NestedScrollView>

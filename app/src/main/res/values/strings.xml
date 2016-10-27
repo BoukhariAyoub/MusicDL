@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MusicDL</string>
+    <string name="action_settings">Settings</string>
+    <string name="customLoadingIcon">&#xe807;</string>
+    <string name="customPlayIcon">&#xe802;</string>
+    <string name="customStopIcon">&#xe803;</string>
+    <string name="download">download</string>
+    <string name="error">Error, Please check your Internet connection!</string>
+    <string name="no_data_available">No Data Available…</string>
+    <string name="app_title">MUSIC DL</string>
+</resources>
