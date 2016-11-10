@@ -1,4 +1,4 @@
-package com.boukharist.musicdl;
+package com.boukharist.musicdl.ui;
 
 import android.annotation.TargetApi;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.boukharist.musicdl;
+package com.boukharist.musicdl.utils;
 
 import android.Manifest;
 import android.app.Activity;
@@ -13,6 +13,7 @@ import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
+import com.boukharist.musicdl.ui.MyAudioPlayer;
 import com.hugomatilla.audioplayerview.AudioPlayerView;
 
 import java.io.File;

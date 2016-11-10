@@ -1,6 +1,7 @@
 
-package com.boukharist.musicdl;
+package com.boukharist.musicdl.networking;
 
+import com.boukharist.musicdl.model.Item;
 import com.google.gson.JsonElement;
 
 import retrofit2.Call;

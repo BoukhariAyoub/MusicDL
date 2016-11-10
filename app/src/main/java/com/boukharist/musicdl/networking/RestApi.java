@@ -1,4 +1,4 @@
-package com.boukharist.musicdl;
+package com.boukharist.musicdl.networking;
 
 import android.util.Log;
 
@@ -6,6 +6,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
+import retrofit2.RxJavaCallAdapterFactory;
 
 /**
  * Created by Administrateur on 14-Feb-16.
@@ -32,13 +33,13 @@ public class RestApi {
 
             logging.setLevel(HttpLoggingInterceptor.Level.BODY);
             OkHttpClient httpClient = new OkHttpClient.Builder()
-                    
                     .addInterceptor(logging)
                     .build();
 
             mRetrofit = new Retrofit.Builder()
                     .baseUrl(ENDPOINT)
                     .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .client(httpClient)
                     .build();
         }

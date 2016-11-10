@@ -1,4 +1,4 @@
-package com.boukharist.musicdl;
+package com.boukharist.musicdl.adapter;
 
 import android.app.Activity;
 import android.graphics.Typeface;
@@ -13,6 +13,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.boukharist.musicdl.model.Item;
+import com.boukharist.musicdl.R;
+import com.boukharist.musicdl.networking.RestApi;
+import com.boukharist.musicdl.networking.RestService;
+import com.boukharist.musicdl.utils.Utils;
+import com.boukharist.musicdl.ui.MyAudioPlayer;
 import com.google.api.services.youtube.model.SearchResult;
 import com.hugomatilla.audioplayerview.AudioPlayerView;
 import com.wang.avi.AVLoadingIndicatorView;
@@ -29,7 +35,7 @@ import retrofit2.Response;
  * Created by Administrateur on 18/12/2015.
  */
 
-class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> implements View.OnClickListener, AudioManager.OnAudioFocusChangeListener {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> implements View.OnClickListener, AudioManager.OnAudioFocusChangeListener {
 
 
     private List<SearchResult> mResults;
@@ -74,9 +80,6 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
         this.vErrorView = errorView;
     }
 
-    public int getState() {
-        return state;
-    }
 
     public void setState(@State int state) {
         this.state = state;
@@ -168,7 +171,7 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
         return mResults.size();
     }
 
-    void addItem(SearchResult item) {
+   public void addItem(SearchResult item) {
         mResults.add(item);
         notifyItemInserted(mResults.size() - 1);
     }
@@ -276,8 +279,6 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
 
                 }
             });
-
-
         }
 
 

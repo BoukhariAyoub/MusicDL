@@ -1,8 +1,6 @@
-package com.boukharist.musicdl;
+package com.boukharist.musicdl.ui;
 
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -11,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.boukharist.musicdl.R;
 import com.github.piasy.rxandroidaudio.StreamAudioPlayer;
 import com.hugomatilla.audioplayerview.AudioPlayerView;
 
@@ -34,7 +33,7 @@ public class ScrollingActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mStreamAudioPlayer = StreamAudioPlayer.getInstance();
+     /*   mStreamAudioPlayer = StreamAudioPlayer.getInstance();
         mBuffer = new byte[BUFFER_SIZE];
       //  AudioURL = "http://www.stephaniequinn.com/Music/Allegro%20from%20Duet%20in%20C%20Major.mp3";
         AudioURL = "http://dlo8.yt-mp3.com/download/mv-zion-t-eat-%EA%BA%BC%EB%82%B4-%EB%A8%B9%EC%96%B4%EC%9A%94.mp3?id=Ibb5RhoKfzE&title=%5BMV%5D+Zion.T+_+Eat%28%EA%BA%BC%EB%82%B4+%EB%A8%B9%EC%96%B4%EC%9A%94%29&t=1476121105&extra=a&ip=37.164.176.142&h=44302853af33a1a780ffa4ab33431d6ce6684944";
@@ -68,7 +67,7 @@ public class ScrollingActivity extends AppCompatActivity {
             public void onClick(View view) {
 
             }
-        });
+        }); */
     }
 
     @Override

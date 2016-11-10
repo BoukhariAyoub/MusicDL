@@ -27,7 +27,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <com.boukharist.musicdl.MyAudioPlayer
+            <com.boukharist.musicdl.ui.MyAudioPlayer
                 android:id="@+id/player"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-package com.boukharist.musicdl;
+package com.boukharist.musicdl.model;
 
 /**
  * Created by Administrateur on 15-Feb-16.

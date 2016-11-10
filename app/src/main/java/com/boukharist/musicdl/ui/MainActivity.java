@@ -1,5 +1,6 @@
-package com.boukharist.musicdl;
+package com.boukharist.musicdl.ui;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.boukharist.musicdl.R;
+import com.boukharist.musicdl.utils.Utils;
+import com.boukharist.musicdl.adapter.RecyclerViewAdapter;
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.http.HttpRequest;
 import com.google.api.client.http.HttpRequestInitializer;
@@ -43,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
+
+
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
@@ -52,12 +58,20 @@ public class MainActivity extends AppCompatActivity {
         errorView = getLayoutInflater().inflate(R.layout.view_error, mRecyclerView, false);
 
 
-        mRecyclerViewAdapter = new RecyclerViewAdapter(this,loadingView, emptyView, errorView);
+        mRecyclerViewAdapter = new RecyclerViewAdapter(this, loadingView, emptyView, errorView);
         mRecyclerView.setAdapter(mRecyclerViewAdapter);
         mRecyclerViewAdapter.setState(RecyclerViewAdapter.STATE_EMPTY);
 
 
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -67,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
         SearchView mSearchView = (SearchView) searchMenuItem.getActionView();
         mSearchView.setOnQueryTextListener(listener);
-
 
         return true;
     }
@@ -105,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(List<SearchResult> result) {
             Log.i(TAG, "onPostExecute");
             //  recursiveRetroCall(result, 0);
-            if(result == null){
+            if (result == null) {
                 result = new ArrayList<>();
             }
             if (result.size() > 0) {
@@ -114,12 +127,11 @@ public class MainActivity extends AppCompatActivity {
                     mRecyclerViewAdapter.addItem(item);
                 }
             }
-
         }
 
         @Override
         protected void onPreExecute() {
-            mRecyclerViewAdapter = new RecyclerViewAdapter(MainActivity.this,loadingView, emptyView, errorView);
+            mRecyclerViewAdapter = new RecyclerViewAdapter(MainActivity.this, loadingView, emptyView, errorView);
             mRecyclerView.setAdapter(mRecyclerViewAdapter);
             mRecyclerViewAdapter.setState(RecyclerViewAdapter.STATE_LOADING);
         }
@@ -128,18 +140,16 @@ public class MainActivity extends AppCompatActivity {
         protected void onProgressUpdate(Void... values) {
             Log.i(TAG, "onProgressUpdate");
         }
-
     }
 
 
     SearchView.OnQueryTextListener listener = new SearchView.OnQueryTextListener() {
         @Override
         public boolean onQueryTextSubmit(String query) {
-            if(Utils.isNetworkAvailable(MainActivity.this)){
+            if (Utils.isNetworkAvailable(MainActivity.this)) {
                 new AsyncCallWS().execute(query);
-            }
-            else {
-                mRecyclerViewAdapter = new RecyclerViewAdapter(MainActivity.this,loadingView, emptyView, errorView);
+            } else {
+                mRecyclerViewAdapter = new RecyclerViewAdapter(MainActivity.this, loadingView, emptyView, errorView);
                 mRecyclerView.setAdapter(mRecyclerViewAdapter);
                 mRecyclerViewAdapter.setState(RecyclerViewAdapter.STATE_ERROR);
             }
@@ -174,13 +184,13 @@ public class MainActivity extends AppCompatActivity {
             search.setKey(apiKey);
             search.setQ(queryTerm);
 
-            // Restrict the search results to only include videos. See:
+            // Restrict  the search results to only include videos. See:
             // https://developers.google.com/youtube/v3/docs/search/list#type
             search.setType("video");
 
             // To increase efficiency, only retrieve the fields that the
             // application uses.
-            //   search.setFields("items(id/kind,id/videoId,snippet/title,snippet/description,snippet/thumbnails/default/url,snippet/thumbnails/medium/url)");
+            //  search.setFields("items(id/kind,id/videoId,snippet/title,snippet/description,snippet/thumbnails/default/url,snippet/thumbnails/medium/url)");
             search.setMaxResults(5L);//AppConstants.NUMBER_OF_VIDEOS_RETURNED);
 
             // Call the API and print results.

@@ -5,23 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.boukharist.musicdl.ScrollingActivity"
+    tools:context="com.boukharist.musicdl.ui.ScrollingActivity"
     tools:showIn="@layout/activity_scrolling">
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.boukharist.musicdl.MyAudioPlayerView
-        android:id="@+id/player"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="30dp"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="40sp"
-        app:loadingText="@string/customLoadingIcon"
-        app:playText="@string/customPlayIcon"
-        app:stopText="@string/customStopIcon"
-        app:useIcons="true"/>
+
 
     <TextView
         android:id="@+id/textView"
